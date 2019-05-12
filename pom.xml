@@ -69,11 +69,26 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>ma.glasnost.orika</groupId>
 			<artifactId>orika-core</artifactId>
 			<version>1.5.4</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>com.github.fge</groupId>
+		    <artifactId>json-patch</artifactId>
+		    <version>1.9</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-text</artifactId>
+		    <version>1.6</version>
+		</dependency>
+
+		
 	</dependencies>
 
 	<build>

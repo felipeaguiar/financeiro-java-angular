@@ -22,4 +22,8 @@ public class CategoriaMapper {
 		return mapper.map(categoria, CategoriaDto.class);
 	}
 
+	public Categoria fomDto(CategoriaDto categoriaDto) {
+		return new Categoria(categoriaDto.getNome());
+	}
+
 }
