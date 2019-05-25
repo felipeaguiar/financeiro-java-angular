@@ -22,7 +22,7 @@ public class CategoriaMapper {
 		return mapper.map(categoria, CategoriaDto.class);
 	}
 
-	public Categoria fomDto(CategoriaDto categoriaDto) {
+	public Categoria fromDto(CategoriaDto categoriaDto) {
 		return new Categoria(categoriaDto.getNome());
 	}
 

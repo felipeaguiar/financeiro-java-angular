@@ -49,7 +49,7 @@ public class CategoriaResource {
 
 	@PostMapping
 	public ResponseEntity<CategoriaDto> salvar(@Valid @RequestBody CategoriaDto categoriaDto) {
-		Categoria categoria = mapper.fomDto(categoriaDto);
+		Categoria categoria = mapper.fromDto(categoriaDto);
 		categoria = categoriaService.salvar(categoria);
 
 		CategoriaDto categoriaDtoSalva = mapper.toDto(categoria);

@@ -1,4 +1,4 @@
-package dev.felipeaguiar.financeiro.application.categoria;
+package dev.felipeaguiar.financeiro.application.pessoa;
 
 import java.util.List;
 
@@ -22,6 +22,10 @@ public class PessoaService {
 	
 	public List<Pessoa> todas() {
 		return pessoaRepository.findAll();
+	}
+	
+	public Long count() {
+		return pessoaRepository.count();
 	}
 
 	public Pessoa buscarPorId(Long id) {

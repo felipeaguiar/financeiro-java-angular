@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -23,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.fge.jsonpatch.JsonPatch;
 
-import dev.felipeaguiar.financeiro.application.categoria.PessoaService;
+import dev.felipeaguiar.financeiro.application.pessoa.PessoaService;
 import dev.felipeaguiar.financeiro.domain.pessoa.Pessoa;
 import dev.felipeaguiar.financeiro.interfaces.dto.PessoaDto;
 import dev.felipeaguiar.financeiro.interfaces.map.PessoaMapper;
@@ -43,10 +46,14 @@ public class PessoaResource {
 	private PessoaMapper mapper;
 
 	@GetMapping
-	public List<PessoaDto> listar() {
-		return pessoaService.todas().stream()
+	public Page<PessoaDto> listar(Pageable pageable) {
+		List<PessoaDto> pessoas = pessoaService.todas().stream()
 			.map(mapper::toDto)
 			.collect(Collectors.toList());
+		
+		Long total = pessoaService.count();
+		
+		return new PageImpl<>(pessoas, pageable, total);
 	}
 
 	@GetMapping("/{id}")
@@ -63,7 +70,7 @@ public class PessoaResource {
 
 	@PostMapping
 	public ResponseEntity<PessoaDto> salvar(@Valid @RequestBody PessoaDto pessoaDto) {
-		Pessoa pessoa = mapper.fomDto(pessoaDto);
+		Pessoa pessoa = mapper.fromDto(pessoaDto);
 		Pessoa pessoaSalva = pessoaService.salvar(pessoa);
 
 		PessoaDto pessoaDtoSalva = mapper.toDto(pessoaSalva);
@@ -74,7 +81,7 @@ public class PessoaResource {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<PessoaDto> atualizar(@PathVariable Long id, @Valid @RequestBody PessoaDto pessoaDto) {
-		Pessoa pessoa = mapper.fomDto(pessoaDto);
+		Pessoa pessoa = mapper.fromDto(pessoaDto);
 		Pessoa pessoaSalva = pessoaService.atualizar(id, pessoa);
 
 		PessoaDto pessoaDtoSalva = mapper.toDto(pessoaSalva);
@@ -89,7 +96,7 @@ public class PessoaResource {
 
 		pessoaDto = helper.applyPatch(patch, pessoaDto, PessoaDto.class);
 
-		Pessoa pessoa = mapper.fomDto(pessoaDto);
+		Pessoa pessoa = mapper.fromDto(pessoaDto);
 		pessoaService.atualizar(id, pessoa);
 
 	}

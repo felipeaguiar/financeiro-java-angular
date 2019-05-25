@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
+import org.apache.commons.lang3.BooleanUtils;
+
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,7 +22,7 @@ import lombok.ToString;
 @Entity
 @ToString
 @EqualsAndHashCode(of = "id")
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
 @RequiredArgsConstructor
 public class Pessoa {
 
@@ -46,5 +48,9 @@ public class Pessoa {
 	@Embedded
 	@Getter @Setter
 	private Endereco endereco;
+
+	public boolean isInativo() {
+		return BooleanUtils.isFalse(ativo);
+	}
 
 }

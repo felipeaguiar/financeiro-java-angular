@@ -23,7 +23,7 @@ public class PessoaMapper {
 		return mapper.map(pessoa, PessoaDto.class);
 	}
 
-	public Pessoa fomDto(PessoaDto pessoaDto) {
+	public Pessoa fromDto(PessoaDto pessoaDto) {
 		Pessoa pessoa = new Pessoa(pessoaDto.getNome(), pessoaDto.getAtivo());
 		
 		if (pessoaDto.getEndereco() != null) {

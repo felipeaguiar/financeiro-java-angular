@@ -10,7 +10,6 @@ public class EnderecoDto {
 	@Size(min = 3, max = 30)
 	private String logradouro;
 
-	@Size(min = 3, max = 30)
 	private String numero;
 
 	@Size(min = 3, max = 30)

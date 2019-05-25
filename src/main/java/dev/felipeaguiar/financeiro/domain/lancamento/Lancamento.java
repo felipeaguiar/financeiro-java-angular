@@ -27,7 +27,7 @@ import lombok.ToString;
 @Entity
 @ToString
 @EqualsAndHashCode(of = "id")
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
 @RequiredArgsConstructor
 public class Lancamento {
 
