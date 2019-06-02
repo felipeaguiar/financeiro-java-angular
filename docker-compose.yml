@@ -1,0 +1,42 @@
+version: '3.5'
+
+services:
+  db:
+    image: postgres:11.2-alpine
+    container_name: financeiro-db
+    restart: always
+    volumes:
+      - financeiro-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - dev-net
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: financeiro
+
+  api:
+    image: financeiro-api
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: financeiro-api
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "80:8080"
+    networks:
+      - dev-net
+    environment:
+      APP_OPTS: --spring.datasource.url=jdbc:postgresql://db:5432/financeiro
+
+volumes:
+  financeiro-data:
+    name: financeiro-data
+
+networks:
+  dev-net:
+    name: dev-net
+    driver: bridge
