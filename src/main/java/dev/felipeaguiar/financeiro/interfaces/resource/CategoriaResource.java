@@ -22,7 +22,7 @@ import dev.felipeaguiar.financeiro.interfaces.map.CategoriaMapper;
 import dev.felipeaguiar.financeiro.interfaces.resource.util.ResourceHelper;
 
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/categorias")
 public class CategoriaResource {
 
 	@Autowired

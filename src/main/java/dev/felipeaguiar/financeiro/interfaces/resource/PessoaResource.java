@@ -33,7 +33,7 @@ import dev.felipeaguiar.financeiro.interfaces.map.PessoaMapper;
 import dev.felipeaguiar.financeiro.interfaces.resource.util.ResourceHelper;
 
 @RestController
-@RequestMapping("/pessoa")
+@RequestMapping("/pessoas")
 public class PessoaResource {
 
 	@Autowired
@@ -50,9 +50,9 @@ public class PessoaResource {
 		List<PessoaDto> pessoas = pessoaService.todas().stream()
 			.map(mapper::toDto)
 			.collect(Collectors.toList());
-		
+
 		Long total = pessoaService.count();
-		
+
 		return new PageImpl<>(pessoas, pageable, total);
 	}
 

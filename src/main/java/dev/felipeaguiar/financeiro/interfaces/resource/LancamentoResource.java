@@ -34,9 +34,9 @@ import dev.felipeaguiar.financeiro.interfaces.map.LancamentoMapper;
 import dev.felipeaguiar.financeiro.interfaces.resource.util.ResourceHelper;
 
 @RestController
-@RequestMapping("/lancamento")
+@RequestMapping("/lancamentos")
 public class LancamentoResource {
-	
+
 	@Autowired
 	private LancamentoService lancamentoService;
 
@@ -51,9 +51,9 @@ public class LancamentoResource {
 		List<LancamentoDto> lancamentos = lancamentoService.filtrar(filter, pageable).stream()
 			.map(mapper::toDto)
 			.collect(Collectors.toList());
-		
+
 		Long count = lancamentoService.count(filter);
-		
+
 		return new PageImpl<>(lancamentos, pageable, count);
 	}
 

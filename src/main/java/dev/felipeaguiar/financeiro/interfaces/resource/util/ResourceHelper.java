@@ -20,20 +20,10 @@ import com.github.fge.jsonpatch.JsonPatch;
 public class ResourceHelper {
 
 	@Autowired
-	Validator validator;
+	private Validator validator;
 
 	@Autowired
 	private ObjectMapper mapper;
-
-	private void validate(Object object) throws MethodArgumentNotValidException, NoSuchMethodException {
-		String name = WordUtils.uncapitalize(object.getClass().getSimpleName());
-		BeanPropertyBindingResult result = new BeanPropertyBindingResult(object, name);
-		validator.validate(object, result);
-
-		if (result.hasErrors()) {
-			throw new MethodArgumentNotValidException(new MethodParameter(object.getClass().getConstructor(), -1), result);
-		}
-	}
 
 	public <T> T applyPatch(JsonPatch patch, T object, Class<T> clazz) throws MethodArgumentNotValidException {
 
@@ -48,6 +38,16 @@ public class ResourceHelper {
 			throw e;
 		} catch (Exception e) {
 			throw new HttpMessageConversionException(patch.toString(), e);
+		}
+	}
+
+	private void validate(Object object) throws MethodArgumentNotValidException, NoSuchMethodException {
+		String name = WordUtils.uncapitalize(object.getClass().getSimpleName());
+		BeanPropertyBindingResult result = new BeanPropertyBindingResult(object, name);
+		validator.validate(object, result);
+
+		if (result.hasErrors()) {
+			throw new MethodArgumentNotValidException(new MethodParameter(object.getClass().getConstructor(), -1), result);
 		}
 	}
 
