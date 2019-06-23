@@ -1,23 +1,15 @@
-INSERT INTO categoria
-(version , nome) VALUES
-(0       , 'Lazer')        ,
-(0       , 'Alimentação')  ,
-(0       , 'Supermercado') ,
-(0       , 'Farmácia')     ,
-(0       , 'Outros');
-
 INSERT INTO pessoa
 (version , nome                , logradouro         , numero , complemento , bairro               , cep         , cidade           , estado , ativo) VALUES
-(0       , 'João Silva'        , 'Rua do Abacaxi'   , '10'   , null        , 'Brasil'             , '38.400-12' , 'Uberlândia'     , 'MG'   , true)         ,
-(0       , 'Maria Rita'        , 'Rua do Sabiá'     , '110'  , 'Apto 101'  , 'Colina'             , '11.400-12' , 'Ribeirão Preto' , 'SP'   , true)         ,
-(0       , 'Pedro Santos'      , 'Rua da Bateria'   , '23'   , null        , 'Morumbi'            , '54.212-12' , 'Goiânia'        , 'GO'   , true)         ,
-(0       , 'Ricardo Pereira'   , 'Rua do Motorista' , '123'  , 'Apto 302'  , 'Aparecida'          , '38.400-12' , 'Salvador'       , 'BA'   , true)         ,
-(0       , 'Josué Mariano'     , 'Av Rio Branco'    , '321'  , null        , 'Jardins'            , '56.400-12' , 'Natal'          , 'RN'   , true)         ,
-(0       , 'Pedro Barbosa'     , 'Av Brasil'        , '100'  , null        , 'Tubalina'           , '77.400-12' , 'Porto Alegre'   , 'RS'   , true)         ,
-(0       , 'Henrique Medeiros' , 'Rua do Sapo'      , '1120' , 'Apto 201'  , 'Centro'             , '12.400-12' , 'Rio de Janeiro' , 'RJ'   , true)         ,
-(0       , 'Carlos Santana'    , 'Rua da Manga'     , '433'  , null        , 'Centro'             , '31.400-12' , 'Belo Horizonte' , 'MG'   , true)         ,
-(0       , 'Leonardo Oliveira' , 'Rua do Músico'    , '566'  , null        , 'Segismundo Pereira' , '38.400-00' , 'Uberlândia'     , 'MG'   , true)         ,
-(0       , 'Isabela Martins'   , 'Rua da Terra'     , '1233' , 'Apto 10'   , 'Vigilato'           , '99.400-12' , 'Manaus'         , 'AM'   , true);
+(0       , 'João Silva'        , 'Rua do Abacaxi'   , '10'   , null        , 'Brasil'             , '38.400-121' , 'Uberlândia'     , 'MG'   , true)         ,
+(0       , 'Maria Rita'        , 'Rua do Sabiá'     , '110'  , 'Apto 101'  , 'Colina'             , '11.400-121' , 'Ribeirão Preto' , 'SP'   , true)         ,
+(0       , 'Pedro Santos'      , 'Rua da Bateria'   , '23'   , null        , 'Morumbi'            , '54.212-121' , 'Goiânia'        , 'GO'   , true)         ,
+(0       , 'Ricardo Pereira'   , 'Rua do Motorista' , '123'  , 'Apto 302'  , 'Aparecida'          , '38.400-121' , 'Salvador'       , 'BA'   , true)         ,
+(0       , 'Josué Mariano'     , 'Av Rio Branco'    , '321'  , null        , 'Jardins'            , '56.400-121' , 'Natal'          , 'RN'   , true)         ,
+(0       , 'Pedro Barbosa'     , 'Av Brasil'        , '100'  , null        , 'Tubalina'           , '77.400-121' , 'Porto Alegre'   , 'RS'   , true)         ,
+(0       , 'Henrique Medeiros' , 'Rua do Sapo'      , '1120' , 'Apto 201'  , 'Centro'             , '12.400-121' , 'Rio de Janeiro' , 'RJ'   , true)         ,
+(0       , 'Carlos Santana'    , 'Rua da Manga'     , '433'  , null        , 'Centro'             , '31.400-121' , 'Belo Horizonte' , 'MG'   , true)         ,
+(0       , 'Leonardo Oliveira' , 'Rua do Músico'    , '566'  , null        , 'Segismundo Pereira' , '38.400-001' , 'Uberlândia'     , 'MG'   , true)         ,
+(0       , 'Isabela Martins'   , 'Rua da Terra'     , '1233' , 'Apto 10'   , 'Vigilato'           , '99.400-121' , 'Manaus'         , 'AM'   , true);
 
 INSERT INTO lancamento
 (version , descricao        , data_vencimento , data_pagamento , valor   , observacao               , tipo , id_categoria , id_pessoa) VALUES

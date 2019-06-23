@@ -52,3 +52,11 @@ SELECT setval('usuario_id_seq', MAX(id), true) FROM usuario;
 --changeset felipe.aguiar:7 dbms:postgresql
 --rollback SELECT setval('perfil_id_seq', 0, true)
 SELECT setval('perfil_id_seq', MAX(id), true) FROM perfil;
+
+--changeset felipe.aguiar:8
+--rollback DELETE FROM TABLE categoria;
+INSERT INTO categoria (version , nome) VALUES (0, 'Lazer');
+INSERT INTO categoria (version , nome) VALUES (0, 'Alimentação');
+INSERT INTO categoria (version , nome) VALUES (0, 'Supermercado');
+INSERT INTO categoria (version , nome) VALUES (0, 'Farmácia');
+INSERT INTO categoria (version , nome) VALUES (0, 'Outros');

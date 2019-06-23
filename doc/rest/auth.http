@@ -7,7 +7,6 @@ grant_type=password
 &password=123456
 
 ###
-
 POST http://localhost:8080/oauth/token HTTP/1.1
 Authorization: Basic angular api_key
 Content-Type: application/x-www-form-urlencoded

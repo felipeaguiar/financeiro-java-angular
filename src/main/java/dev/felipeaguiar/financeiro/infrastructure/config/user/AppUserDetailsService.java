@@ -1,4 +1,4 @@
-package dev.felipeaguiar.financeiro.infrastructure.config.security;
+package dev.felipeaguiar.financeiro.infrastructure.config.user;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,11 +21,11 @@ public class AppUserDetailsService implements UserDetailsService {
 	private UsuarioRepository usuarioRepository;
 
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String email) {
 		Usuario usuario = usuarioRepository.findByEmail(email)
 			.orElseThrow(() -> new UsernameNotFoundException("Usuário e/ou senha incorretos"));
 
-		return new User(email, usuario.getSenha(), getPermissoes(usuario));
+		return new AppUser(usuario, getPermissoes(usuario));
 	}
 
 	private Collection<? extends GrantedAuthority> getPermissoes(Usuario usuario) {
