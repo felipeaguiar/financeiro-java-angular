@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.felipeaguiar.financeiro.application.lancamento.LancamentoService;
 import dev.felipeaguiar.financeiro.domain.lancamento.Lancamento;
+import dev.felipeaguiar.financeiro.domain.lancamento.LancamentoResumo;
 import dev.felipeaguiar.financeiro.domain.lancamento.filter.LancamentoFilter;
 import dev.felipeaguiar.financeiro.interfaces.dto.LancamentoDto;
 import dev.felipeaguiar.financeiro.interfaces.map.LancamentoMapper;
@@ -53,6 +54,16 @@ public class LancamentoResource {
 		List<LancamentoDto> lancamentos = lancamentoService.filtrar(filter, pageable).stream()
 			.map(mapper::toDto)
 			.collect(Collectors.toList());
+
+		Long count = lancamentoService.count(filter);
+
+		return new PageImpl<>(lancamentos, pageable, count);
+	}
+
+	@GetMapping(params = "resumo")
+	@PreAuthorize("hasAuthority('PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
+	public Page<LancamentoResumo> resumir(LancamentoFilter filter, Pageable pageable) {
+		List<LancamentoResumo> lancamentos = lancamentoService.resumir(filter, pageable);
 
 		Long count = lancamentoService.count(filter);
 
