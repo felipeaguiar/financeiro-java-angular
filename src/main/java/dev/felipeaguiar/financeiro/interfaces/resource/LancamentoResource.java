@@ -6,12 +6,15 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.github.fge.jsonpatch.JsonPatch;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +26,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.github.fge.jsonpatch.JsonPatch;
 
 import dev.felipeaguiar.financeiro.application.lancamento.LancamentoService;
 import dev.felipeaguiar.financeiro.domain.lancamento.Lancamento;
@@ -47,6 +48,7 @@ public class LancamentoResource {
 	private LancamentoMapper mapper;
 
 	@GetMapping
+	@PreAuthorize("hasAuthority('PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
 	public Page<LancamentoDto> listar(LancamentoFilter filter, Pageable pageable) {
 		List<LancamentoDto> lancamentos = lancamentoService.filtrar(filter, pageable).stream()
 			.map(mapper::toDto)
@@ -58,6 +60,7 @@ public class LancamentoResource {
 	}
 
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
 	public ResponseEntity<LancamentoDto> buscarPorId(@PathVariable Long id) {
 		Lancamento lancamento = lancamentoService.buscarPorId(id);
 		return ResponseEntity.ok(mapper.toDto(lancamento));
@@ -65,11 +68,13 @@ public class LancamentoResource {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAuthority('REMOVER_LANCAMENTO') and #oauth2.hasScope('write')")
 	public void remover(@PathVariable Long id) {
 		lancamentoService.remover(id);
 	}
 
 	@PostMapping
+	@PreAuthorize("hasAuthority('CADASTRAR_LANCAMENTO') and #oauth2.hasScope('write')")
 	public ResponseEntity<LancamentoDto> salvar(@Valid @RequestBody LancamentoDto lancamentoDto) {
 		Lancamento lancamento = mapper.fromDto(lancamentoDto);
 		Lancamento lancamentoSalva = lancamentoService.salvar(lancamento);
@@ -81,6 +86,7 @@ public class LancamentoResource {
 	}
 
 	@PutMapping("/{id}")
+	@PreAuthorize("hasAuthority('CADASTRAR_LANCAMENTO') and #oauth2.hasScope('write')")
 	public ResponseEntity<LancamentoDto> atualizar(@PathVariable Long id, @Valid @RequestBody LancamentoDto lancamentoDto) {
 		Lancamento lancamento = mapper.fromDto(lancamentoDto);
 		Lancamento lancamentoSalvo = lancamentoService.atualizar(id, lancamento);
@@ -91,6 +97,7 @@ public class LancamentoResource {
 	}
 
 	@PatchMapping("/{id}")
+	@PreAuthorize("hasAuthority('CADASTRAR_LANCAMENTO') and #oauth2.hasScope('write')")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void patch(@PathVariable Long id, @RequestBody JsonPatch patch) throws MethodArgumentNotValidException {
 		LancamentoDto lancamentoDto = mapper.toDto(lancamentoService.buscarPorId(id));

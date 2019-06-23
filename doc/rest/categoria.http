@@ -1,1 +1,18 @@
 GET http://localhost:8080/categorias HTTP/1.1
+
+###
+
+GET http://localhost:8080/categorias HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjEyNDY3MjIsInVzZXJfbmFtZSI6ImFkbWluQG1haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiQ0FEQVNUUkFSX0NBVEVHT1JJQSIsIlBFU1FVSVNBUl9DQVRFR09SSUEiXSwianRpIjoiMmQ1MjVjMzgtZTg1NS00MWE0LWE0ZjYtYzM1YThhYjUxOGQ3IiwiY2xpZW50X2lkIjoibW9iaWxlIiwic2NvcGUiOlsicmVhZCJdfQ.0QJr89O2qQToyqVhRK0ceuiCSy8PU4xKwL1pe4P8MuA
+
+###
+
+POST http://localhost:8080/categorias HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjEyNDQ2NDQsInVzZXJfbmFtZSI6ImFkbWluQG1haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiQ0FEQVNUUkFSX0NBVEVHT1JJQSIsIlBFU1FVSVNBUl9DQVRFR09SSUEiXSwianRpIjoiNzM0ODk4MDUtOGZlNy00OTNlLTlhYzUtZmRjOTdhN2ZhN2VhIiwiY2xpZW50X2lkIjoibW9iaWxlIiwic2NvcGUiOlsicmVhZCJdfQ.6axj-aL3kaQAyREAw73HAMNrIhaRfNRwkUbD9XjmrmE
+
+{
+  "id": 1,
+  "version": 0,
+  "nome": "Festa1"
+}

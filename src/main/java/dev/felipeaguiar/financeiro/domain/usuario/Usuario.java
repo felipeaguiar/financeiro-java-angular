@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -54,8 +55,8 @@ public class Usuario {
 	@Getter @Setter
 	private String senha;
 
-	@ManyToMany
-	@JoinTable(name = "perfil_usuario", joinColumns = @JoinColumn(name = "id_perfil") , inverseJoinColumns = @JoinColumn(name = "id_usuario"))
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "usuario_perfil", joinColumns = @JoinColumn(name = "id_usuario") , inverseJoinColumns = @JoinColumn(name = "id_perfil"))
 	private Set<Perfil> perfis = new HashSet<>();
 
 	public void addPerfil(Perfil perfil) {

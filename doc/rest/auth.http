@@ -1,0 +1,16 @@
+POST http://localhost:8080/oauth/token HTTP/1.1
+Authorization: Basic web api_key
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password
+&username=admin@mail.com
+&password=123456
+
+###
+
+POST http://localhost:8080/oauth/token HTTP/1.1
+Authorization: Basic angular api_key
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=refresh_token
+&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbkBtYWlsLmNvbSIsInNjb3BlIjpbInJlYWQiXSwiYXRpIjoiMmQ1MjVjMzgtZTg1NS00MWE0LWE0ZjYtYzM1YThhYjUxOGQ3IiwiZXhwIjoxNTYxMzMxMzIyLCJhdXRob3JpdGllcyI6WyJDQURBU1RSQVJfQ0FURUdPUklBIiwiUEVTUVVJU0FSX0NBVEVHT1JJQSJdLCJqdGkiOiI1MTdhYzUyOC1kODQ1LTQzZGQtYWQ5NC1iYTVkZmVkMjZiMWQiLCJjbGllbnRfaWQiOiJtb2JpbGUifQ.2aOUmI9KVoTn0hJmt66xnkcgmgo8B2LTlQ7S5nbxk8o

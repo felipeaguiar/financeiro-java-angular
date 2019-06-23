@@ -1,33 +1,5 @@
-POST http://localhost:8080/oauth/token HTTP/1.1
-Authorization: Basic angular api_key
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=password
-&username=admin
-&password=admin
-
-###
-
-POST http://localhost:8080/oauth/token HTTP/1.1
-Authorization: Basic angular api_key
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=refresh_token
-&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJhdGkiOiIyNzIxNGQ2My00NDZlLTQ5MmEtYjNmYy1hZjdlOTMyNGYwN2MiLCJleHAiOjE1NjA3OTg5MzUsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiJkZGNiOGJjMy1lZjZjLTQ0ZDItYWI0Mi00OTVjZTJjOGYxOWUiLCJjbGllbnRfaWQiOiJhbmd1bGFyIn0._9JXLCngCo2h7wE5dpi7WB4WnBJyPDCKgCIdttJJAXQ
-###
-
-POST http://localhost:8080/oauth/token HTTP/1.1
-Authorization: Basic angular api_key
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=refresh_token
-
-
-###
-
-GET http://localhost:8080/lancamentos/1 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjEwNjkyMDEsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjA2ZWEwN2I4LTM0MmEtNGQ3MS05ODFmLWM0ZGI3YzViMmU1NyIsImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.zOdRVVvM-pVJlKRSekfDs8Z6Dlvc7h1nv62X3F6GZds
-
+GET http://localhost:8080/lancamentos HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjEyNTkxNDcsInVzZXJfbmFtZSI6ImFkbWluQG1haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiQ0FEQVNUUkFSX0xBTkNBTUVOVE8iLCJQRVNRVUlTQVJfQ0FURUdPUklBIiwiUEVTUVVJU0FSX1BFU1NPQSIsIlJFTU9WRVJfUEVTU09BIiwiUEVTUVVJU0FSX0xBTkNBTUVOVE8iLCJDQURBU1RSQVJfQ0FURUdPUklBIiwiQ0FEQVNUUkFSX1BFU1NPQSIsIlJFTU9WRVJfQ0FURUdPUklBIiwiUkVNT1ZFUl9MQU5DQU1FTlRPIl0sImp0aSI6IjRmMGFiZDY4LTA0NjEtNDhmNy1hZDNkLTRkOTY4YzllYWFjZiIsImNsaWVudF9pZCI6IndlYiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.9TP_qW74HaEQXvpGUTIr2OsF-TS0M5kaztZNBZjYosM
 ###
 
 GET http://localhost:8080/lancamentos/1 HTTP/1.1

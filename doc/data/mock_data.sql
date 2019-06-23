@@ -1,5 +1,5 @@
 INSERT INTO categoria
-(version , nome) values
+(version , nome) VALUES
 (0       , 'Lazer')        ,
 (0       , 'Alimentação')  ,
 (0       , 'Supermercado') ,
@@ -7,7 +7,7 @@ INSERT INTO categoria
 (0       , 'Outros');
 
 INSERT INTO pessoa
-(version , nome                , logradouro         , numero , complemento , bairro               , cep         , cidade           , estado , ativo) values
+(version , nome                , logradouro         , numero , complemento , bairro               , cep         , cidade           , estado , ativo) VALUES
 (0       , 'João Silva'        , 'Rua do Abacaxi'   , '10'   , null        , 'Brasil'             , '38.400-12' , 'Uberlândia'     , 'MG'   , true)         ,
 (0       , 'Maria Rita'        , 'Rua do Sabiá'     , '110'  , 'Apto 101'  , 'Colina'             , '11.400-12' , 'Ribeirão Preto' , 'SP'   , true)         ,
 (0       , 'Pedro Santos'      , 'Rua da Bateria'   , '23'   , null        , 'Morumbi'            , '54.212-12' , 'Goiânia'        , 'GO'   , true)         ,
@@ -20,7 +20,7 @@ INSERT INTO pessoa
 (0       , 'Isabela Martins'   , 'Rua da Terra'     , '1233' , 'Apto 10'   , 'Vigilato'           , '99.400-12' , 'Manaus'         , 'AM'   , true);
 
 INSERT INTO lancamento
-(version , descricao        , data_vencimento , data_pagamento , valor   , observacao               , tipo , id_categoria , id_pessoa) values
+(version , descricao        , data_vencimento , data_pagamento , valor   , observacao               , tipo , id_categoria , id_pessoa) VALUES
 (0       , 'Salário mensal' , '2019-06-10'    , null           , 6500.00 , 'Distribuição de lucros' , 0    , 1            , 1)                ,
 (0       , 'Bahamas'        , '2019-02-10'    , '2019-02-10'   , 100.32  , null                     , 1    , 2            , 2)                ,
 (0       , 'Top Club'       , '2019-06-10'    , null           , 120     , null                     , 0    , 3            , 3)                ,

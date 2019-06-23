@@ -11,6 +11,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConversionException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -20,17 +21,17 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestControllerAdvice
-public class ApiExceptionHandler {
+public class AppExceptionHandler {
 
 	@Autowired
 	private MessageSource messageSource;
-	
+
 	@ExceptionHandler(PessoaInativaException.class)
 	public ResponseEntity<ApiResponse> handlerDataIntegrityViolationException(PessoaInativaException e, Locale locale) {
-		
+
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		String message = messageSource.getMessage("pessoa.inativa", null, locale);
-		
+
 		ApiResponse error = ApiResponse.of(status.value(), new ApiMessage("pessoa-inativa", message));
 		return ResponseEntity.status(status).body(error);
 	}
@@ -62,21 +63,31 @@ public class ApiExceptionHandler {
 
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<ApiResponse> handlerDataIntegrityViolationException(DataIntegrityViolationException e, Locale locale) {
-		
+
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		String message = messageSource.getMessage("integridade.referencial", null, locale);
-		
+
 		ApiResponse error = ApiResponse.of(status.value(), new ApiMessage("referential-integrity", message));
 		return ResponseEntity.status(status).body(error);
 	}
-	
+
 	@ExceptionHandler(EmptyResultDataAccessException.class)
 	public ResponseEntity<ApiResponse> handlerEmptyResultDataAccessException(EmptyResultDataAccessException e, Locale locale) {
-		
+
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		String message = messageSource.getMessage("recurso.nao-encontrado", null, locale);
-		
+
 		ApiResponse error = ApiResponse.of(status.value(), new ApiMessage("not-found", message));
+		return ResponseEntity.status(status).body(error);
+	}
+
+	@ExceptionHandler(AccessDeniedException.class)
+	public ResponseEntity<ApiResponse> handlerAccessDeniedException(AccessDeniedException e, Locale locale) {
+
+		HttpStatus status = HttpStatus.FORBIDDEN;
+		String message = messageSource.getMessage("acesso.negado", null, locale);
+
+		ApiResponse error = ApiResponse.of(status.value(), new ApiMessage("acesso-negado", message));
 		return ResponseEntity.status(status).body(error);
 	}
 
