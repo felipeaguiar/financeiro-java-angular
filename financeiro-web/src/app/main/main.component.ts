@@ -77,13 +77,6 @@ export class MainComponent implements OnInit {
         $('.app-search').toggle(200);
       });
       // ==============================================================
-      // Right sidebar options
-      // ==============================================================
-      $('.right-side-toggle').click(() => {
-        $('.right-sidebar').slideDown(50);
-        $('.right-sidebar').toggleClass('shw-rside');
-      });
-      // ==============================================================
       // This is for the floating labels
       // ==============================================================
       $('.floating-labels .form-control').on('focus blur', function(e) {
@@ -129,7 +122,7 @@ export class MainComponent implements OnInit {
       // ==============================================================
       // Perfact scrollbar
       // ==============================================================
-      $('.scroll-sidebar, .right-side-panel, .message-center, .right-sidebar').perfectScrollbar();
+      $('.scroll-sidebar, .right-side-panel, .message-center').perfectScrollbar();
 
       // ==============================================================
       // Resize all elements
