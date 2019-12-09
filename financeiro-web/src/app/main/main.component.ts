@@ -13,9 +13,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     $(() => {
-      $(() => {
-        $('.preloader').fadeOut();
-      });
       $(document).on('click', '.mega-dropdown', (e) => {
         e.stopPropagation();
       });
