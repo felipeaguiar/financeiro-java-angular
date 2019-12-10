@@ -11,15 +11,12 @@ export class ThemeService {
 
   initMain() {
     $(() => {
-      $(document).on('click', '.mega-dropdown', (e) => {
-        e.stopPropagation();
-      });
       // ==============================================================
       // This is for the top header part and sidebar part
       // ==============================================================
-      var set = function() {
-        var width = (window.innerWidth > 0) ? window.innerWidth : this.screen.width;
-        var topOffset = 0;
+      const set = function() {
+        const width = (window.innerWidth > 0) ? window.innerWidth : this.screen.width;
+        const topOffset = 0;
         if (width < 1170) {
           $('body').addClass('mini-sidebar');
           $('.navbar-brand span').hide();
@@ -29,7 +26,7 @@ export class ThemeService {
           $('.navbar-brand span').show();
         }
 
-        var height = ((window.innerHeight > 0) ? window.innerHeight : this.screen.height) - 1;
+        let height = ((window.innerHeight > 0) ? window.innerHeight : this.screen.height) - 1;
         height = height - topOffset;
 
         if (height < 1) {
@@ -47,6 +44,7 @@ export class ThemeService {
       // ==============================================================
       // Theme options
       // ==============================================================
+
       $('.sidebartoggler').on('click', () => {
         if ($('body').hasClass('mini-sidebar')) {
           $('body').trigger('resize');
@@ -57,7 +55,6 @@ export class ThemeService {
           $('body').trigger('resize');
           $('body').addClass('mini-sidebar');
           $('.navbar-brand span').hide();
-
         }
       });
 
@@ -82,8 +79,8 @@ export class ThemeService {
       // Auto select left navbar
       // ==============================================================
       $(function() {
-        var url = window.location;
-        var element = $('ul#sidebarnav a').filter(() => {
+        const url = window.location;
+        let element = $('ul#sidebarnav a').filter(() => {
           return this.href === url;
         }).addClass('active').parent().addClass('active');
         while (true) {
@@ -150,7 +147,6 @@ export class ThemeService {
       $('a[data-action="close"]').on('click', () => {
         $(this).closest('.card').removeClass().slideUp('fast');
       });
-
     });
   }
 
