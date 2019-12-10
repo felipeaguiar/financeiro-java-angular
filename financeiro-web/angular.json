@@ -35,6 +35,9 @@
               "node_modules/@mdi/font/css/materialdesignicons.css",
               "node_modules/@icon/themify-icons/themify-icons.css",
               "node_modules/materialize-css/sass/components/_waves.scss",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
               "src/styles.scss"
             ],
             "scripts": [
