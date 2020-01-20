@@ -7,7 +7,8 @@ const routes: Routes = [
     path: 'main',
     component: MainComponent,
     children: [
-      { path: '', loadChildren: './home/home.module#HomeModule' }
+      { path: '', loadChildren: './home/home.module#HomeModule' },
+      { path: 'lancamento', loadChildren: './lancamento/lancamento.module#LancamentoModule' }
     ]
   }
 ];
