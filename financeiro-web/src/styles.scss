@@ -9,3 +9,59 @@
 @import 'scss/responsive';
 
 @import 'scss/colors/blue-dark';
+
+// primeng grid
+
+.app-custom-grid {
+  @media(min-width: 640px) {
+
+    .responsive-text-left {
+      text-align: left;
+    }
+
+    .responsive-text-right {
+      text-align: right;
+    }
+
+    .responsive-text-center {
+      text-align: center;
+    }
+
+  }
+
+  table th {
+    min-width: 90px;
+  }
+
+  .col-valor {
+    min-width: 90px;
+  }
+
+  .col-data {
+    min-width: 110px;
+  }
+
+  .col-acoes {
+    min-width: 100px;
+  }
+}
+
+.w-10 {
+  width: 10%;
+}
+
+.w-15 {
+  width: 15%;
+}
+
+.w-20 {
+  width: 20%;
+}
+
+.w-30 {
+  width: 30%;
+}
+
+.w-40 {
+  width: 40%;
+}

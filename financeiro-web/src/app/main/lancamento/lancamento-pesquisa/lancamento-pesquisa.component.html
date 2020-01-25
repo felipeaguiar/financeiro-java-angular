@@ -1,5 +1,5 @@
 <app-page-container>
-  <div class="container">
+  <form>
     <div class="form-group form-row">
       <label for="descricao" class="col-md-2 col-form-label text-md-right">Descrição:</label>
       <div class="col-md">
@@ -21,10 +21,60 @@
         <input id="vencimento-fim" name="vencimento-fim" type="text" class="form-control" pInputText>
       </div>
     </div>
-  </div>
+
+    <div class="col-md-12 text-center mt-4">
+      <button pButton type="button" label="Limpar"></button>&nbsp;
+      <button pButton type="submit" label="Pesquisar"></button>
+    </div>
+  </form>
 </app-page-container>
 
-
 <app-page-container>
-  Pesquisa
+  <p-table
+    class="app-custom-grid"
+    [value]="lancamentos"
+    [autoLayout]="true"
+    [responsive]="true"
+    [paginator]="true"
+    [rows]="5" >
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="w-30">Pessoa</th>
+        <th class="w-30">Descrição</th>
+        <th class="w-15 text-center col-data">Vencimento</th>
+        <th class="w-15 text-center col-data">Pagamento</th>
+        <th class="w-15 text-center col-valor">Valor</th>
+        <th class="w-15 text-center col-acoes">Ações</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-lancamento>
+      <tr>
+        <td class="responsive-text-left"><span class="ui-column-title">Pessoa:</span>{{lancamento.pessoa}}</td>
+        <td class="responsive-text-left"><span class="ui-column-title">Descrição:</span>{{lancamento.descricao}}</td>
+        <td class="responsive-text-center"><span class="ui-column-title">Vencimento:</span>{{lancamento.dataVencimento}}</td>
+        <td class="responsive-text-center"><span class="ui-column-title">Pagamento:</span>{{lancamento.dataPagamento}}</td>
+        <td class="responsive-text-right" [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'"><span class="ui-column-title">Valor:</span>{{lancamento.valor}}</td>
+        <td class="text-center">
+          <button
+            pButton
+            type="button"
+            icon="fa fa-pencil"
+            pTooltip="Editar"
+            tooltipPosition="top">
+          </button>&nbsp;
+          <button
+            pButton
+            type="button"
+            icon="fa fa-trash"
+            pTooltip="Excluir"
+            tooltipPosition="top">
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+
 </app-page-container>
